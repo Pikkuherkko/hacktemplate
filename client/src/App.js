@@ -3,12 +3,13 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import DemoText from "./components/DemoText";
 import CheckoutForm from "./components/CheckoutForm";
+import WalletConnect from "./components/Metamask";
 
 import api from "./api";
 
 import "./App.css";
 
-const stripePromise = api.getPublicStripeKey().then(key => loadStripe(key));
+const stripePromise = api.getPublicStripeKey().then((key) => loadStripe(key));
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <div className="sr-main">
           <header className="sr-header">
             <div className="sr-header__logo" />
+            <WalletConnect />
           </header>
           <Elements stripe={stripePromise}>
             <CheckoutForm />

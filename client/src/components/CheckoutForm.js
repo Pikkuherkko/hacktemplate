@@ -24,7 +24,9 @@ export default function CheckoutForm() {
 
     // Step 2: Create PaymentIntent over Stripe API
     api
-      .createPaymentIntent()
+      .createPaymentIntent({
+        payment_method_types: ["card"],
+      })
       .then((clientSecret) => {
         setClientSecret(clientSecret);
       })
